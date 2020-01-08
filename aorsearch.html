@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Liff Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <body>
+        <div class="regisbox">
+            <img src="https://www.monsterbacklinks.com/pics/319222-1IvI0s1421931178.png" class="avatar">
+            <h1>กรอกข้อมูลของท่าน</h1>
+            <form>
+                <p>ชื่อสาขา</p>
+                <input type="text" name="uname" id="uname" placeholder="Enter you Branch">
+                <p>วันที่เริ่มต้น</p>
+                <input type="date" name="fdate" id="fdate">
+                <p>วันที่สิ้นสุด</p>
+                <input type="date" name="ldate" id="ldate">
+                <button type="button" onclick="onSubmit();">Click Here</button>
+            </form>
+
+        </div>
+
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ajaxStart(function() {
+            $("#progress").css("display", "block");
+        });
+
+        $(document).ajaxComplete(function() {
+            $("#progress").css("display", "none");
+        });
+
+        function onSubmit() {
+            $(document).ready(function() {
+                $("#result").html('');
+
+                var oSearch = {
+                    uname: $("#uname").val(),
+                    fdate: $("#fdate").val(),
+                    ldate: $("#ldate").val()
+                };
+
+                $.ajax({
+                    type: "GET",
+                    url: "https://ff55bb19.ngrok.io/Search",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(oSearch),
+                    success: function(res) {
+                        if (res == "No data found.") {
+                            $("#result").html(res);
+                        } else {
+                            var content = "";
+                            $.each(res, function() {
+                                content += ("<tr>" +
+                                    "<td>" + this.XFsahGrand + "</td>");
+                            });
+                            $("<table border=\"1\">").html(
+                                "<thead> " +
+                                "<tr>" +
+                                "<th> <strong> ยอดขายสินค้า </strong> </th>" +
+                                "</tr>" +
+                                "</thead>" +
+                                "<tbody>" +
+                                content +
+                                "</tbody>" +
+                                "</table>"
+                            ).appendTo("#result");
+                        }
+                    },
+                    error: function(res) {
+                        alert("เกิดข้อผิดพลาด " + res);
+                    }
+                });
+            });
+        };
+    </script>
+
+</head>
+
+</html>

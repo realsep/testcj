@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #3E5151, #DECBA4);
+    overflow: hidden;
+}
+
+.regisbox {
+    width: 320px;
+    height: 420px;
+    background: #E4D5D3;
+    color: #000;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: 30%;
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.regisbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.regisbox input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.regisbox input[type="text"],
+input[type="date"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #4C4184;
+    font-size: 16px;
+}
+
+.regisbox input[type="button"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #878CB4;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.regisbox input[type="button"]:hover {
+    cursor: pointer;
+    background: #DECBA4;
+    color: #000;
+}
