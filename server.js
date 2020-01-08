@@ -11,18 +11,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
-    res.sendFile('/search.html', { root: __dirname });
-});
 
-app.post('/Search', function(req, res) {
-    var request = require('request');
-    request('http://www.google.com', function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(body) // Print the google web page.
-        }
-    });
-
-
+    res.redirect('https://ff55bb19.ngrok.io');
 });
 
 app.listen(port, function() {
